@@ -1,0 +1,6 @@
+{
+  "Enabled": true,
+  "CorrectInventoryLookups": true,
+  "CorrectRemovalPackets": true,
+  "CorrectMissingMapDispatch": true
+}

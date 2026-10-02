@@ -1,12 +1,27 @@
-# Chart 0.3.0 compatibility findings — review for Léon
+# Dimension compatibility findings — review for Léon
 
 October 2, 2026. Tested with official Chart 0.3.0, Manifold 0.6.0,
 Vintage Story 1.22.7, and Rift Traveler 0.7.4 development builds.
 
 This is a focused **source snapshot for review**, not a standalone mod or a
 release. No Chart/Manifold binaries, decompiled upstream source, player logs,
-savegames, or lighting adapters are included. Our intent is to keep using
+or savegames are included. Our intent is to keep using
 official upstream builds and retire temporary adapters when fixes ship.
+
+## Start here
+
+| Area | Status | Review entry point |
+| --- | --- | --- |
+| Map database cleanup | Atlas regression passes; repeated in-game menu/reload tests no longer crash | Map findings below and [reproduction guide](REPRODUCTION.md) |
+| Map-click waypoints | Temporary dimension-preserving adapter; upstream fix planned | Map findings below and [waypoint source](source/DimensionWaypointCompatibility.cs) |
+| New terrain mapping | Still failing; suspected overworld map-chunk dependency, not runtime-confirmed | Section 2 below |
+| Native block lighting | Experimental opt-in candidate; native-path tests and encouraging in-game results | [Lighting overview, source links, and limitations](lighting/README.md) |
+
+The root `source`, `tests`, and `notes` folders concern mapping. The separate
+`lighting` folder contains the native lighting adapter, FD-specific integration,
+configuration example, read-only diagnostics, and relevant tests. It is not a
+second lighting engine or a standalone install. Older repair writers and FD sky
+or ambient environment code are intentionally not bundled.
 
 ## Files
 
